@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Snake{% endblock %}
+
+{% block stylesheets %}
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.9.0/css/all.css">
+        <link rel="stylesheet" href="css/normalize.min.css">
+        <link rel="stylesheet" href="css/style.css">
+{% endblock %}
+
+{% block body %}
+
+<header class="content">
+    <h1>Snake</h1>
+    <button id="start" class="button">Start</button>
+    <div id="score">Score : <span>0</span></div>
+</header>
+
+<!-- plateau de jeu -->
+<section id="board" class="content"></section>
+  
+{% endblock %}
+
+{% block javascripts %}
+{{ parent() }}
+  <!-- script javascript -->
+ 
+  <script src={{ asset('js/Snake/Snake.class.js') }}></script>
+  <script src={{ asset('js/Snake/Apple.class.js') }}></script>
+  <script src={{ asset('js/Snake/Board.class.js') }}></script>
+  <script src={{ asset('js/Snake/Game.class.js') }}></script>
+
+  <!-- code principal -->
+  <script src={{ asset('js/Snake/main.js') }}></script>
+{% endblock %}

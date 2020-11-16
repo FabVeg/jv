@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Breakout!{% endblock %}
+
+{% block body %}
+<style>
+    * { padding: 0; margin: 0; }
+    canvas { background: #eee; display: block; margin: 0 auto; }
+</style>
+<body>
+
+    <canvas id="myCanvas" width="480" height="320"></canvas>
+{% endblock %}
+{% block javascripts %}
+{{ parent() }}
+ 
+  <script src={{ asset('js/Breakout/breakout.js') }}></script>
+{% endblock %}
