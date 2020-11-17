@@ -1,10 +1,11 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello HomeController!{% endblock %}
+{% block title %}Home{% endblock %}
 
 {% block body %}
 <ul>
     <li><a href={{ path('snake') }}>Snake</a></li>
     <li><a href={{ path('breakout') }}>Breakout</a></li>
+    <li><a href={{ path('pong') }}>Pong</a></li>
 </ul>
 {% endblock %}

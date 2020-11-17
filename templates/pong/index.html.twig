@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Pong{% endblock %}
+
+{% block body %}
+<h1>Pong</h1>
+<main>
+    <canvas id="canvas" width="640" height="480"></canvas>
+</main>
+{% endblock %}
+{% block javascripts %}
+{{ parent() }}
+  <script src={{ asset('js/Pong/mainPong.js') }}></script>
+{% endblock %}
