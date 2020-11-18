@@ -1,6 +1,7 @@
 'use strict';
 var canvas;
 var game;
+var anim;
 
 const PLAYER_HEIGHT = 100;
 const PLAYER_WIDTH = 5;
@@ -93,9 +94,15 @@ function collide(player) {
         game.ball.speed.x *= -1.2;
         changeDirection(player.y);
     }
+    // Update score
+    if (player == game.player) {
+        game.computer.score++;
+        document.querySelector('#computer-score').textContent = game.computer.score;
+    } else {
+        game.player.score++;
+        document.querySelector('#player-score').textContent = game.player.score;
+    }
 }
-
-
 
 
 function play() {
@@ -104,7 +111,25 @@ function play() {
     computerMove();
     ballMove();
     
-    requestAnimationFrame(play);
+   anim = requestAnimationFrame(play);
+}
+
+function stop() {
+    cancelAnimationFrame(anim);
+    // Set ball and players to the center
+    game.ball.x = canvas.width / 2;
+    game.ball.y = canvas.height / 2;
+    game.player.y = canvas.height / 2 - PLAYER_HEIGHT / 2;
+    game.computer.y = canvas.height / 2 - PLAYER_HEIGHT / 2;
+    // Reset speed
+    game.ball.speed.x = 2;
+    game.ball.speed.y = 2;
+    // Init score
+    game.computer.score = 0;
+    game.player.score = 0;
+    document.querySelector('#computer-score').textContent = game.computer.score;
+    document.querySelector('#player-score').textContent = game.player.score;
+    draw();
 }
 
 
@@ -112,10 +137,12 @@ document.addEventListener('DOMContentLoaded', function () {
     canvas = document.getElementById('canvas');
     game = {
         player: {
-            y: canvas.height / 2 - PLAYER_HEIGHT / 2
+            y: canvas.height / 2 - PLAYER_HEIGHT / 2,
+            score: 0
         },
         computer: {
-            y: canvas.height / 2 - PLAYER_HEIGHT / 2
+            y: canvas.height / 2 - PLAYER_HEIGHT / 2,
+            score: 0
         },
         ball: {
             x: canvas.width / 2,
@@ -129,6 +156,6 @@ document.addEventListener('DOMContentLoaded', function () {
     }
     
     draw();
-    play();
-
+    document.querySelector('#start-game').addEventListener('click', play);
+    document.querySelector('#stop-game').addEventListener('click', stop);
 });

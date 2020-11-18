@@ -3,8 +3,26 @@
 {% block title %}Pong{% endblock %}
 
 {% block body %}
+<style>
+  ul {
+      list-style: none;
+      padding: 0;
+  }
+  li {
+      display: inline-block;
+  }
+</style>
 <h1>Pong</h1>
-<main>
+<main role="main">
+  <p>Joueur 1 : <em id="player-score">0</em> - Joueur 2 : <em id="computer-score">0</em></p>
+    <ul>
+        <li>
+            <button id="start-game">Démarrer</button>
+        </li>
+        <li>
+            <button id="stop-game">Arrêter</button>
+        </li>
+    </ul>
     <canvas id="canvas" width="640" height="480"></canvas>
 </main>
 {% endblock %}
