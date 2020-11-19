@@ -86,6 +86,15 @@ function collide(player) {
         game.ball.y = canvas.height / 2;
         game.player.y = canvas.height / 2 - PLAYER_HEIGHT / 2;
         game.computer.y = canvas.height / 2 - PLAYER_HEIGHT / 2;
+
+        // Update score
+    if (player == game.player) {
+        game.computer.score++;
+        document.querySelector('#computer-score').textContent = game.computer.score;
+    } else {
+        game.player.score++;
+        document.querySelector('#player-score').textContent = game.player.score;
+    }
         
         // Reset speed
         game.ball.speed.x = 2;
@@ -93,14 +102,6 @@ function collide(player) {
         // Increase speed and change direction
         game.ball.speed.x *= -1.2;
         changeDirection(player.y);
-    }
-    // Update score
-    if (player == game.player) {
-        game.computer.score++;
-        document.querySelector('#computer-score').textContent = game.computer.score;
-    } else {
-        game.player.score++;
-        document.querySelector('#player-score').textContent = game.player.score;
     }
 }
 
