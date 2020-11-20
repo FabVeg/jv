@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Tetris{% endblock %}
+
+{% block body %}
+<div class="canvas_wrap">
+    <canvas id="tetris" width="240" height="400"></canvas>
+    <button type="button" id="start_game">Start</button>
+    <button type="button" id="pause_game">Pause</button>
+</div>
+{% endblock %}
+{% block javascripts %}
+{{ parent() }}
+  <script src={{ asset('js/Tetris/mainTetris.js') }}></script>
+{% endblock %}
